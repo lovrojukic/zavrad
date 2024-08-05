@@ -1,7 +1,7 @@
 .page-container {
     position: relative;
     height: 100vh; /* Full height of the viewport */
-    background: url('../photos/pancake.jpg') no-repeat center center fixed; /* Adjust path as necessary */
+     /* Adjust path as necessary */
     background-size: cover; /* Cover the entire page */
 }
 

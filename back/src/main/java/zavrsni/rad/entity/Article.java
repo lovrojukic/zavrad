@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -21,7 +22,7 @@ public class Article {
     private Long id;
     private String name;
     private Long amount;
-    private Long price;
+    private double price;
     private String supplier;
 
 }

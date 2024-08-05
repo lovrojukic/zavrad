@@ -6,7 +6,7 @@ import Register from './components/Register.jsx';
 import Login from './components/Login.jsx';
 import HomePage from './HomePage.jsx';
 import Cookies from 'js-cookie';
-import AddDodatak from './components/AddDodatak.jsx';
+import AddArticle from './components/AddArticle.jsx';
 import AddPancake from "./components/AddPancake";
 import Ponuda from "./components/Ponuda";
 import Naruci from "./components/Naruci";
@@ -48,7 +48,7 @@ const App = () => {
                 />
                 {!isLoggedIn && <Route path="/register" element={<Register />} />}
                 {!isLoggedIn && <Route path="/login" element={<Login onLogin={handleLogin} />} />}
-                <Route path="/addDodatak" element={<AddDodatak isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
+                <Route path="/addDodatak" element={<AddArticle isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
                 <Route path="/addPancake" element={<AddPancake isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
                 <Route path="/ponuda" element={<Ponuda isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
                 <Route path="/naruci" element={<Naruci isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />

@@ -6,9 +6,7 @@ import Sidebar from "./Sidebar";
 //import Sidebar from './Sidebar'
 
 const Header = (props) => {
-    const isLoggedIn = props.isLoggedIn;
-    const onLogout = props.onLogout;
-    const name = localStorage.getItem('username'); // Assuming you store the username in localStorage
+
     const [sidebarOpen, setSidebarOpen] = useState(false); // State to handle sidebar visibility
 
     const toggleSidebar = () => {
@@ -17,28 +15,25 @@ const Header = (props) => {
 
     return (
         <header className="Header">
-            {isLoggedIn ? (
+
                 <div className="Header-Content">
                     <div className="Sidebar-Toggle">
                         <button onClick={toggleSidebar}>☰</button>
                         {/* Sidebar toggle button */}
                     </div>
-                    {sidebarOpen && <Sidebar onLogout={onLogout} className="open"/>}
-                    <div className="LoggedIn-Info">Pozdrav, {name}! Ulogirani ste u sustav.</div>
-                    <div className="LoggedIn-Actions">
-                        <button onClick={onLogout}>Logout</button>
-                    </div>
+                    {sidebarOpen && <Sidebar  className="open"/>}
+
+
                 </div>
-            ) : (
                 <div>
                     <Link to="/register">
-                        <button>Register</button>
+                        <button>Pregled Artikala</button>
                     </Link>
                     <Link to="/login">
                         <button>Login</button>
                     </Link>
                 </div>
-            )}
+
         </header>
     );
 };

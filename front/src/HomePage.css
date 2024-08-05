@@ -1,7 +1,7 @@
 /* Apply to the main page container for a pancake-like warm background */
 .page-container {
     /* vh unit ensures it's always at least the full height of the viewport */
-    
+    background: url('') no-repeat center center fixed;
     background-size: cover;
     margin: 0;
     padding: 0;
