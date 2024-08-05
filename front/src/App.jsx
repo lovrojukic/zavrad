@@ -13,6 +13,8 @@ import Racun from "./components/Racun";
 import PopisDodatak from "./components/PopisDodatak";
 import PopisArtikala from "./components/PopisArtikala";
 import PopisNarudzbi from "./components/PopisNarudzbi";
+import Narudžbenica from "./components/Narudžbenica";
+import Primka from "./components/Primka";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -55,6 +57,8 @@ const App = () => {
                 <Route path="/popisDodatak" element={<PopisDodatak isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
                 <Route path="/popisArtikala" element={<PopisArtikala isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
                 <Route path="/popisNarudzbi" element={<PopisNarudzbi isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
+                <Route path="/narudžbenica" element={<Narudžbenica isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
+                <Route path="/primka" element={<Primka isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
 
             </Routes>
         </Router>

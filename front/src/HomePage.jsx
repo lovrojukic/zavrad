@@ -20,6 +20,12 @@ const HomePage = (props) => {
                     <Link to="/addArticle" className="auth-link">
                         <button className="auth-button">Dodajte artikl</button>
                     </Link>
+                    <Link to="/narudžbenica" className="auth-link">
+                        <button className="auth-button">Narudžbenica</button>
+                    </Link>
+                    <Link to="/primka" className="auth-link">
+                        <button className="auth-button">Primka</button>
+                    </Link>
                     <Link to="/ponuda" className="auth-link">
                         <button className="auth-button">Ponuda</button>
                     </Link>
