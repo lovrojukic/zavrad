@@ -7,38 +7,49 @@ function Login(props) {
     const onLogin = props.onLogin;
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [recaptchaValue, setRecaptchaValue] = useState(null);
 
     async function authenticate(e) {
         e.preventDefault();
 
-        const body = `username=${username.toLowerCase()}&password=${password}`;
+        const loginData = {
+            usernameOrEmail: username.toLowerCase(),
+            password: password
+        };
+
         const options = {
-            credentials: 'include',
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
             },
-            body: body,
+            body: JSON.stringify(loginData),
         };
 
         try {
-            const response = await fetch('http://localhost:8080/login', options);
+            const response = await fetch('https://palacinkapp.onrender.com/api/auth/signin', options);
             if (response.ok) {
+                console.log(response);
+                const data = await response.json();
+                // Store the JWT token in local storage or cookies
+                localStorage.setItem('jwtToken', data.accessToken);
+                alert('Prijava uspješna');
+                const role = data.role;
                 Cookies.set('user', 'authenticated');
                 localStorage.setItem('username', username.toLowerCase());
-                localStorage.setItem('name', response.headers.get('X-Name'));
-                alert('Prijava uspješna');
+                localStorage.setItem('name', response.headers.get('Name'));
+                localStorage.setItem('userRole', role);
+                console.log(role);
                 onLogin();
                 window.location.replace('/');
             } else {
                 // Handle non-successful response here
-                console.error('Authentication failed:', response.statusText);
+                alert('Authentication failed: Invalid username or password');
             }
         } catch (error) {
             console.error('Error:', error);
+            alert('Authentication failed: ' + error.message);
         }
     }
+
 
     return (
         <div className="centered-wrapper">

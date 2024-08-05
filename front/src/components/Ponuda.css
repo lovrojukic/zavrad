@@ -1,0 +1,23 @@
+/* Ponuda.css */
+.ponuda-container {
+    margin: 20px;
+}
+
+.palacinke-list {
+    list-style: none;
+    padding: 0;
+}
+
+.palacinka-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}

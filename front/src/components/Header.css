@@ -80,3 +80,64 @@ a:hover {
     width: 100%;
     max-width: 400px;
 }
+
+/* Header.css additions */
+.Header button {
+    /* Style your toggle button */
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Ensure the Header component has a relative position for absolute positioning inside it */
+.Header {
+    position: relative;
+    /* ... other styles ... */
+}
+
+/* Position the sidebar toggle button to the left */
+.Sidebar-Toggle {
+    position: absolute;
+    left: 0; /* Align to the left side */
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    z-index: 100; /* Ensure it's above other content */
+}
+
+/* Update the LoggedIn-Info class to add padding-left to make space for the sidebar toggle */
+.LoggedIn-Info {
+    padding-left: 50px; /* Adjust as needed based on your design */
+    /* ... other styles ... */
+}
+
+/* When the sidebar is open, we want to shift the content to the right */
+.sidebar.open + .Header-Content .LoggedIn-Info,
+.sidebar.open + .Header-Content .LoggedIn-Actions {
+    margin-left: 200px; /* Same as the sidebar width */
+}
+
+/* Adjust the sidebar styling */
+.sidebar {
+    /* ... existing styles ... */
+    z-index: 99; /* Just below the toggle button */
+}
+
+/* Adjustments for LoggedIn-Actions if needed */
+.LoggedIn-Actions {
+    /* Add any specific styles you need here */
+}
+
+/* Make sure the links in the sidebar have enough spacing */
+.sidebar a {
+    /* ... existing styles ... */
+    padding: 15px; /* Increase padding for larger touch targets */
+    margin-bottom: 15px; /* Increase margin for more space between links */
+}
+
+/* Adjust the button styling in the sidebar */
+.sidebar button {
+    /* ... existing styles ... */
+    margin-top: 30px; /* Increase margin-top if needed */
+}

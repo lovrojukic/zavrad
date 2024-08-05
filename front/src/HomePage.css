@@ -1,8 +1,10 @@
 /* Apply to the main page container for a pancake-like warm background */
 .page-container {
-    background-color: #FFEBD6;
-    color: #6E4C1E; /* A brown color for the text to match the pancake theme */
-    font-family: 'Comfortaa', cursive; /* A softer, rounder font */
+    /* vh unit ensures it's always at least the full height of the viewport */
+    
+    background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
 /* Header styles */
@@ -80,3 +82,61 @@ a:hover {
     width: 100%;
     max-width: 400px;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    min-height: 100vh;
+}
+
+/* Existing styles remain unchanged */
+
+/* Centered content with full page height */
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Styling for the welcome message */
+.welcome-title {
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block; /* Only as wide as necessary */
+    margin-bottom: 30px; /* Space above buttons */
+    color: #6E4C1E; /* Color for the text */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for legibility */
+}
+
+/* Styles for auth buttons */
+.auth-button {
+    background-color: #333; /* Dark background for contrast */
+    color: #fff; /* White text for contrast */
+    margin: 10px; /* Space between buttons */
+    padding: 15px 30px; /* Larger buttons */
+    font-size: 1.2em; /* Larger text */
+    border-radius: 20px; /* Rounded edges */
+    width: 200px; /* Fixed width for both buttons */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    transition: background-color 0.3s, transform 0.1s; /* Smooth transitions */
+}
+
+.auth-button:hover {
+    background-color: #555; /* Darker on hover */
+    transform: translateY(-2px); /* Slight raise on hover */
+}
+
+/* Styles for auth links to remove text decoration */
+.auth-link {
+    text-decoration: none;
+}
+
+/* Other styles remain unchanged */

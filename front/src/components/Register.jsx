@@ -15,27 +15,38 @@ function Register() {
     async function save(event) {
         event.preventDefault();
 
+        // Remove existing alerts, if any
         var stariDiv = document.getElementsByClassName('alert-container')[0];
         if (stariDiv && stariDiv.parentElement) {
             stariDiv.parentElement.removeChild(stariDiv);
         }
+
         try {
             console.log("Submitting:", ime, prezime, email, lozinka);
-            await axios.post("/api/registracija", {
-                ime: ime,
-                prezime: prezime,
+
+            // Update the request to match your new signup endpoint and data format
+            const response = await axios.post("https://palacinkapp.onrender.com/api/auth/signup", {
+                name: `${ime} ${prezime}`, // Assuming you want to combine first and last name
+                username: email, // Or any username logic you want
                 email: email,
-                lozinka: lozinka,
-                uloga: "korisnik"
+                password: lozinka
             }, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-            alert("Registracija uspješna");
-            window.location.replace("/");
+
+            // Handle the response based on your new authentication system
+            if (response.status === 201) {
+                alert("Registracija uspješna");
+                window.location.replace("/login"); // Redirect to login page
+            } else {
+                // Handle other HTTP statuses appropriately
+                alert("Registracija neuspjesna: " + response.data.message);
+            }
         } catch (err) {
-            alert("Registracija neuspjesna");
+            // Handle errors from the server or network issues
+            alert("Registracija neuspjesna: " + err.message);
         }
     }
 
