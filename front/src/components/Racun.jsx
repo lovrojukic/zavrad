@@ -5,7 +5,7 @@ import { jsPDF } from "jspdf";
 import 'jspdf-autotable';
 import "./Ponuda.css";
 
-function Ponuda(props) {
+function Racun(props) {
     const { isLoggedIn, onLogout } = props;
     const [artikli, setArtikli] = useState([]);
     const [kosarica, setKosarica] = useState([]);
@@ -96,9 +96,9 @@ function Ponuda(props) {
         }
     };
 
-    const generirajPonudu = () => {
+    const generirajRacun = () => {
         const doc = new jsPDF();
-        doc.text('Ponuda', 20, 20);
+        doc.text('Racun', 20, 20);
         const tableColumn = ["Ime Artikla", "Cijena", "Kolicina"];
         const tableRows = [];
 
@@ -113,7 +113,7 @@ function Ponuda(props) {
 
         doc.autoTable(tableColumn, tableRows, { startY: 30 });
         doc.text(`Ukupno: ${izracunajUkupnuCijenu()} kn`, 20, doc.lastAutoTable.finalY + 10);
-        doc.save('ponuda.pdf');
+        doc.save('racun.pdf');
     };
 
     return (
@@ -153,11 +153,14 @@ function Ponuda(props) {
                 </ul>
                 <p>Ukupna cijena: {izracunajUkupnuCijenu()} kn</p>
                 {izracunajUkupnuCijenu() > 0 && (
-                    <button onClick={generirajPonudu} className="auth-button">Generiraj Ponudu</button>
+                    <button onClick={generirajRacun} className="auth-button">Generiraj Račun</button>
+                )}
+                {izracunajUkupnuCijenu() > 0 && (
+                    <button onClick={posaljiNarudzbu} className="auth-button">Naručite!</button>
                 )}
             </div>
         </div>
     );
 }
 
-export default Ponuda;
+export default Racun;

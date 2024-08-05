@@ -9,9 +9,9 @@ import Cookies from 'js-cookie';
 import AddArticle from './components/AddArticle.jsx';
 import AddPancake from "./components/AddPancake";
 import Ponuda from "./components/Ponuda";
-import Naruci from "./components/Naruci";
+import Racun from "./components/Racun";
 import PopisDodatak from "./components/PopisDodatak";
-import PopisPalacinki from "./components/PopisPalacinki";
+import PopisArtikala from "./components/PopisArtikala";
 import PopisNarudzbi from "./components/PopisNarudzbi";
 
 const App = () => {
@@ -48,12 +48,12 @@ const App = () => {
                 />
                 {!isLoggedIn && <Route path="/register" element={<Register />} />}
                 {!isLoggedIn && <Route path="/login" element={<Login onLogin={handleLogin} />} />}
-                <Route path="/addDodatak" element={<AddArticle isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
+                <Route path="/addArticle" element={<AddArticle isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
                 <Route path="/addPancake" element={<AddPancake isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
                 <Route path="/ponuda" element={<Ponuda isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
-                <Route path="/naruci" element={<Naruci isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
+                <Route path="/racun" element={<Racun isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
                 <Route path="/popisDodatak" element={<PopisDodatak isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
-                <Route path="/popisPalacinki" element={<PopisPalacinki isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
+                <Route path="/popisArtikala" element={<PopisArtikala isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
                 <Route path="/popisNarudzbi" element={<PopisNarudzbi isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
 
             </Routes>

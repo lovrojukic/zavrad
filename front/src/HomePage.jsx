@@ -17,14 +17,14 @@ const HomePage = (props) => {
                 </div>
 
                 <div className="auth-buttons">
-                    <Link to="/addDodatak" className="auth-link">
+                    <Link to="/addArticle" className="auth-link">
                         <button className="auth-button">Dodajte artikl</button>
                     </Link>
-                    <Link to="/addPancake" className="auth-link">
+                    <Link to="/ponuda" className="auth-link">
                         <button className="auth-button">Ponuda</button>
                     </Link>
 
-                    <Link to="/naruci" className="auth-link">
+                    <Link to="/racun" className="auth-link">
                         <button className="auth-button">Račun</button>
                     </Link>
                 </div>

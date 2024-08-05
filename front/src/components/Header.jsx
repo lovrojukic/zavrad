@@ -26,11 +26,11 @@ const Header = (props) => {
 
                 </div>
                 <div>
-                    <Link to="/register">
-                        <button>Pregled Artikala</button>
+                    <Link to="/">
+                        <button>Početna</button>
                     </Link>
-                    <Link to="/login">
-                        <button>Login</button>
+                    <Link to="/PopisArtikala">
+                        <button>Pregled Artikala</button>
                     </Link>
                 </div>
 
