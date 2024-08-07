@@ -38,6 +38,17 @@ public class ArticleService {
         return articleRepository.save(a);
     }
 
+    public Article addArticleCount(Long articleId, Long additionalAmount) {
+        Optional<Article> articleOptional = articleRepository.findById(articleId);
+        if (articleOptional.isPresent()) {
+            Article article = articleOptional.get();
+            article.setAmount(article.getAmount() + additionalAmount); // Dodavanje količine
+            return articleRepository.save(article);
+        } else {
+            throw new RuntimeException("Article not found");
+        }
+    }
+
 
     public OrderArticleResponse orderArticle(OrderArticleRequests orderArticleRequests) {
         List<Article> articlesToOrder = new ArrayList<>();

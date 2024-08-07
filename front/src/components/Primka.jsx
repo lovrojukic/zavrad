@@ -10,6 +10,7 @@ function Primka(props) {
     const [artikli, setArtikli] = useState([]);
     const [kosarica, setKosarica] = useState([]);
     const [kolicine, setKolicine] = useState({});
+    const [primkaGenerirana, setPrimkaGenerirana] = useState(false);
 
     useEffect(() => {
         const fetchArtikli = async () => {
@@ -62,41 +63,6 @@ function Primka(props) {
         return kosarica.reduce((ukupno, stavka) => ukupno + stavka.cijena * stavka.kolicina, 0);
     };
 
-    const handleKosaricaQuantityChange = (id, newQuantity) => {
-        setKosarica(kosarica.map(stavka => stavka.id === id ? { ...stavka, kolicina: parseInt(newQuantity, 10) } : stavka));
-        setKolicine(prev => ({
-            ...prev,
-            [id]: newQuantity
-        }));
-    };
-
-    const posaljiNarudzbu = async () => {
-        try {
-            const token = localStorage.getItem('jwtToken');
-            const orderArticles = kosarica.map(stavka => ({
-                articleId: stavka.id,
-                amount: stavka.kolicina
-            }));
-            const response = await axios.post('http://localhost:8080/api/article/order', {
-                articleList: orderArticles
-            }, {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-            if (response.data.success) {
-                alert('Narudžba je uspješno poslana!');
-                setKosarica([]); // Očisti košaricu nakon uspješne narudžbe
-            } else {
-                alert('Problem sa narudžbom: ' + response.data.error);
-            }
-        } catch (error) {
-            console.error('Error sending order:', error);
-            alert('Problem pri slanju narudžbe. Pokušajte ponovo.');
-        }
-    };
-
     const generirajPrimku = () => {
         const doc = new jsPDF();
         doc.text('Primka', 20, 20);
@@ -116,6 +82,33 @@ function Primka(props) {
         doc.autoTable(tableColumn, tableRows, { startY: 30 });
         doc.text(`Ukupno: ${izracunajUkupnuCijenu()} kn`, 20, doc.lastAutoTable.finalY + 10);
         doc.save('primka.pdf');
+        setPrimkaGenerirana(true);
+    };
+
+    const potvrdiPrimku = async () => {
+        try {
+            const token = localStorage.getItem('jwtToken');
+            const formattedData = kosarica.map(item => ({
+                articleId: item.id,
+                additionalAmount: item.kolicina
+            }));
+
+            const response = await axios.post('http://localhost:8080/api/article/addcount', formattedData, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.status === 200) {
+                alert('Zalihe su uspješno ažurirane!');
+                setKosarica([]); // Clear cart after successful update
+                setPrimkaGenerirana(false);
+            }
+        } catch (error) {
+            console.error('Error updating inventory:', error);
+            alert('Problem pri ažuriranju zaliha. Pokušajte ponovo.');
+        }
     };
 
     return (
@@ -146,7 +139,7 @@ function Primka(props) {
                             <input
                                 type="number"
                                 value={stavka.kolicina}
-                                onChange={(e) => handleKosaricaQuantityChange(stavka.id, e.target.value)}
+                                onChange={(e) => handleQuantityChange(stavka.id, e.target.value)}
                                 min="1"
                                 style={{ width: '50px', margin: '0 10px' }}
                             /> x - {stavka.cijena} kn
@@ -157,8 +150,8 @@ function Primka(props) {
                 {izracunajUkupnuCijenu() > 0 && (
                     <button onClick={generirajPrimku} className="auth-button">Generiraj Primku</button>
                 )}
-                {izracunajUkupnuCijenu() > 0 && (
-                    <button onClick={posaljiNarudzbu} className="auth-button">Naručite!</button>
+                {primkaGenerirana && (
+                    <button onClick={potvrdiPrimku} className="auth-button">Potvrdi Primku</button>
                 )}
             </div>
         </div>
