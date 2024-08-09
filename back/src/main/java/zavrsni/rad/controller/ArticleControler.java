@@ -14,9 +14,10 @@ import zavrsni.rad.service.ArticleService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/article")
 public class ArticleControler {
 
@@ -51,5 +52,12 @@ public class ArticleControler {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error processing request");
         }
     }
+
+    @PostMapping("/check_reorder")
+    public List<String> checkReorder() {
+        return articleService.checkReorderForAllArticles();
+    }
+
+
 
 }

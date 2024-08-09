@@ -34,6 +34,9 @@ public class ArticleService {
                 .price(articleCreateRequest.getPrice())
                 .amount(articleCreateRequest.getAmount())
                 .supplier(articleCreateRequest.getSupplier())
+                .DemandVariability(articleCreateRequest.getDemandVariability())  // Dodano
+                .MonthlyDemand(articleCreateRequest.getMonthlyDemand())          // Dodano
+                .LeadTime(articleCreateRequest.getLeadTime())                    // Dodano
                 .build();
         return articleRepository.save(a);
     }
@@ -48,6 +51,7 @@ public class ArticleService {
             throw new RuntimeException("Article not found");
         }
     }
+
 
 
     public OrderArticleResponse orderArticle(OrderArticleRequests orderArticleRequests) {
@@ -98,6 +102,38 @@ public class ArticleService {
 
         articleRepository.saveAll(articlesToOrder);
         return OrderArticleResponse.builder().success(true).sum(sum).articleList(orderedArticles).build();
+    }
+
+    public List<String> checkReorderForAllArticles() {
+        List<Article> articles = articleRepository.findAll();
+        List<String> articlesToReorder = new ArrayList<>();
+
+        for (Article article : articles) {
+            String result = ReorderChecker.checkReorder(
+                    article.getName(),
+                    article.getMonthlyDemand(),
+                    article.getAmount().intValue(),
+                    article.getDemandVariability(),
+                    article.getLeadTime()
+            );
+
+            if (result != null && result.contains("true")) {
+                // Dobijanje imena artikla iz odgovora
+                String[] responseParts = result.replaceAll("[{}\"]", "").split(",");
+                for (String part : responseParts) {
+                    String[] keyValue = part.split(":");
+                    if (keyValue[0].trim().equals("reorder")) {
+                        if (keyValue[1].trim().equals("true")) {
+                            articlesToReorder.add(article.getName());
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        System.out.println(articlesToReorder);
+        return articlesToReorder;
     }
 }
 

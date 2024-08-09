@@ -9,7 +9,10 @@ const AddArticle = (props) => {
         name: '',
         amount: '',
         price: '',
-        supplier: ''
+        supplier: '',
+        demandVariability: '',
+        monthlyDemand: '',
+        leadTime: ''
     });
 
     const handleChange = (e) => {
@@ -22,7 +25,10 @@ const AddArticle = (props) => {
         const formattedData = {
             ...articleData,
             amount: parseInt(articleData.amount), // osigurava da je količina broj
-            price: parseFloat(articleData.price) // osigurava da je cijena broj
+            price: parseFloat(articleData.price), // osigurava da je cijena broj
+            demandVariability: parseFloat(articleData.demandVariability),
+            monthlyDemand: parseInt(articleData.monthlyDemand),
+            leadTime: parseInt(articleData.leadTime)
         };
 
         try {
@@ -62,6 +68,18 @@ const AddArticle = (props) => {
                     <div className="form-group">
                         <label htmlFor="supplier">Dobavljač:</label>
                         <input type="text" id="supplier" value={articleData.supplier} onChange={handleChange} required />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="demandVariability">Varijabilnost Potražnje:</label>
+                        <input type="number" id="demandVariability" value={articleData.demandVariability} onChange={handleChange} required />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="monthlyDemand">Mjesečna Potražnja:</label>
+                        <input type="number" id="monthlyDemand" value={articleData.monthlyDemand} onChange={handleChange} required />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="leadTime">Vrijeme Nabave (dani):</label>
+                        <input type="number" id="leadTime" value={articleData.leadTime} onChange={handleChange} required />
                     </div>
                     <div className="form-group">
                         <button type="submit">Dodaj</button>

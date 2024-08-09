@@ -14,4 +14,7 @@ public class ArticleCreateRequest {
     private Long amount;
     private double price;
     private String supplier;
+    private Long MonthlyDemand;
+    private double DemandVariability;
+    private Long LeadTime;
 }
