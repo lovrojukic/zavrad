@@ -1,143 +1,61 @@
-/* Apply to the main page container for a pancake-like warm background */
-.page-container {
-    background-color: #FFEBD6;
-    color: #6E4C1E; /* A brown color for the text to match the pancake theme */
-    font-family: 'Comfortaa', cursive; /* A softer, rounder font */
-}
-
 /* Header styles */
 .Header {
-    background-color: #F5D7B5; /* Light brown background for the header */
-    color: #6E4C1E;
-    padding: 10px 0;
+    background-color: #2C3E50; /* Slightly lighter blue than the page background */
+    color: white;
+    padding: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(110, 76, 30, 0.2); /* Soft shadow for depth */
+    width: 100%;
 }
 
-.Header .LoggedIn {
-    margin: 5px;
-    padding: 5px;
-    border-radius: 5px; /* Rounded corners for buttons */
-    background-color: #FFF6E5; /* Lighter shade for the logged-in section */
-}
-
-/* Button styles for a more inviting look */
-button {
-    background-color: #FFD79B; /* A soft, pancake syrup color */
-    color: #6E4C1E;
+/* Link and button styling within the header */
+.Header a, .Header button {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
     border: none;
-    border-radius: 15px;
     padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    font-family: 'Comfortaa', cursive;
-    font-size: 1em;
-    box-shadow: 0 2px 5px rgba(110, 76, 30, 0.2);
-    transition: background-color 0.3s;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-button:hover {
-    background-color: #FFC477; /* A slightly darker tone on hover */
+/* Hover effects for links and buttons in the header */
+.Header a:hover, .Header button:hover {
+    background-color: #3498DB; /* Change to a bright blue for hover */
+    color: white; /* Keep text color white on hover */
 }
 
-/* Form styles */
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
+/* Main navigation link styles if using a navbar */
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    display: inline-block;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #FFD79B;
-    box-shadow: inset 0 2px 5px rgba(110, 76, 30, 0.1);
+.nav-link:hover {
+    background-color: #3498DB; /* Matching hover effect for navigation links */
+    color: white;
 }
 
-/* Link styles */
-a {
-    color: #6E4C1E;
-    text-decoration: underline;
-}
-
-a:hover {
-    color: #FFC477;
-}
-
-/* Other styles */
-.centered-wrapper {
+/* Adjust header spacing and alignment */
+.Header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 0 20px; /* Add horizontal padding */
 }
 
-.register-container, .container {
-    background-color: #FFF6E5;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 15px rgba(110, 76, 30, 0.2);
-    width: 100%;
-    max-width: 400px;
-}
-
-/* Header.css additions */
-.Header button {
-    /* Style your toggle button */
+/* Style for the menu icon */
+.menu-icon {
     background: none;
     border: none;
+    color: white;
     font-size: 24px;
     cursor: pointer;
-    margin-right: 10px;
 }
 
-/* Ensure the Header component has a relative position for absolute positioning inside it */
+/* Enhance visual separation in the header */
 .Header {
-    position: relative;
-    /* ... other styles ... */
-}
-
-/* Position the sidebar toggle button to the left */
-.Sidebar-Toggle {
-    position: absolute;
-    left: 0; /* Align to the left side */
-    top: 50%;
-    transform: translateY(-50%); /* Center vertically */
-    z-index: 100; /* Ensure it's above other content */
-}
-
-/* Update the LoggedIn-Info class to add padding-left to make space for the sidebar toggle */
-.LoggedIn-Info {
-    padding-left: 50px; /* Adjust as needed based on your design */
-    /* ... other styles ... */
-}
-
-/* When the sidebar is open, we want to shift the content to the right */
-.sidebar.open + .Header-Content .LoggedIn-Info,
-.sidebar.open + .Header-Content .LoggedIn-Actions {
-    margin-left: 200px; /* Same as the sidebar width */
-}
-
-/* Adjust the sidebar styling */
-.sidebar {
-    /* ... existing styles ... */
-    z-index: 99; /* Just below the toggle button */
-}
-
-/* Adjustments for LoggedIn-Actions if needed */
-.LoggedIn-Actions {
-    /* Add any specific styles you need here */
-}
-
-/* Make sure the links in the sidebar have enough spacing */
-.sidebar a {
-    /* ... existing styles ... */
-    padding: 15px; /* Increase padding for larger touch targets */
-    margin-bottom: 15px; /* Increase margin for more space between links */
-}
-
-/* Adjust the button styling in the sidebar */
-.sidebar button {
-    /* ... existing styles ... */
-    margin-top: 30px; /* Increase margin-top if needed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow for depth */
 }

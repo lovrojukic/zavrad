@@ -119,7 +119,7 @@ function Narudžbenica(props) {
     return (
         <div className="ponuda-container">
             <Header isLoggedIn={isLoggedIn} onLogout={onLogout} />
-            <h2>Ponuda Artikala</h2>
+            <h2>Narudžbenica Artikala</h2>
             <ul className="artikli-list">
                 {artikli.map(artikl => (
                     <li key={artikl.id} className="artikl-item">

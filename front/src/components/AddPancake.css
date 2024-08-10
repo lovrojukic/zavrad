@@ -1,19 +1,20 @@
 .page-container {
     position: relative;
     height: 100vh; /* Full height of the viewport */
-     /* Adjust path as necessary */
-    background-size: cover; /* Cover the entire page */
+    background-color: #1B2430; /* Dark blue background */
 }
 
 .register-container {
     width: 100%; /* Full width */
     max-width: 400px; /* Maximum width of the form */
     padding: 40px;
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    background-color: #2C3E50; /* Darker shade of blue, closer to the header */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
     text-align: center; /* Center the text within the container */
-    margin-top: 120px; /* Add some space between the header and the form */
+    margin-top: 50px; /* Adjust spacing to center the form vertically */
+    margin-left: auto; /* Centering the form horizontally */
+    margin-right: auto; /* Centering the form horizontally */
 }
 
 .form-group {
@@ -23,19 +24,22 @@
 .form-group label {
     display: block;
     margin-bottom: 0.5em;
+    color: #FFF; /* White text for better readability */
 }
 
 .form-group input {
     width: 100%; /* Full width of the form group */
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ddd;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #3498DB; /* Bright blue border */
+    background-color: #273B47; /* Slightly lighter blue for input background */
+    color: #FFF; /* White text inside inputs */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3); /* Subtle inner shadow */
 }
 
 button {
-    background-color: #FFD79B; /* Styling for the button */
-    color: #6E4C1E;
+    background-color: #3498DB; /* Vibrant blue for buttons */
+    color: white;
     border: none;
     border-radius: 15px;
     padding: 10px 20px;
@@ -45,7 +49,7 @@ button {
 }
 
 button:hover {
-    background-color: #FFC477; /* Darker tone on hover */
+    background-color: #2980B9; /* Darker blue on hover */
 }
 
 .dodatci-container {
@@ -68,4 +72,5 @@ button:hover {
 
 .dodatak-label {
     cursor: pointer;
+    color: #FFF; /* White label for better visibility */
 }

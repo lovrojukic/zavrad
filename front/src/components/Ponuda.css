@@ -1,23 +1,83 @@
+/* Global background */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #1B2430; /* Ensure the whole page has the same dark blue background */
+}
+
 /* Ponuda.css */
 .ponuda-container {
     margin: 20px;
+    color: #FFF; /* White text for readability */
+    font-family: 'Roboto', sans-serif; /* Modern and readable font */
+    background-color: transparent; /* Remove any specific background to let the global color show through */
+    min-height: 100vh; /* Full height of the viewport */
+    padding-bottom: 20px; /* Additional padding at the bottom */
 }
 
-.palacinke-list {
+.artikli-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px; /* Space from the header */
+}
+
+.artikl-item {
+    margin-bottom: 20px; /* More space between items for better readability */
+    padding: 10px;
+    background-color: transparent; /* Use transparent to maintain the uniform background */
+    border-radius: 5px;
+    border: 1px solid #2C3E50; /* Border to define each item without changing background color */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spread out the elements */
+}
+
+.artikl-item input[type="number"], .kosarica input[type="number"] {
+    width: 60px; /* Sufficient width for quantity input */
+    padding: 5px;
+    border: 1px solid #3498DB; /* Bright blue border */
+    background-color: #273B47; /* Darker input background for contrast */
+    color: #FFF; /* White text */
+    border-radius: 3px;
+}
+
+button {
+    background-color: #3498DB; /* Vibrant blue for buttons */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980B9; /* Darker blue on hover */
+}
+
+.kosarica {
+    background-color: transparent; /* Keep the cart background consistent with the page */
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #2C3E50; /* Border to define the cart area */
+    margin-top: 30px; /* Space between the list and the cart */
+}
+
+.kosarica h3, .ponuda-container h2 {
+    border-bottom: 1px solid #3498DB; /* Add a subtle line under headings */
+    padding-bottom: 10px;
+}
+
+.kosarica ul {
     list-style: none;
     padding: 0;
 }
 
-.palacinka-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.sidebar-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
+.kosarica li {
+    border-bottom: 1px solid #273B47; /* Lighter line for items in the cart */
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between; /* Layout for the item and its details */
+    margin-bottom: 5px; /* Space between items */
 }

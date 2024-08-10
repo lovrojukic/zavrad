@@ -3,7 +3,7 @@ import axios from "axios";
 import Header from "./Header";
 import { jsPDF } from "jspdf";
 import 'jspdf-autotable';
-import "./Ponuda.css";
+import "./Racun.css";
 
 function Racun(props) {
     const { isLoggedIn, onLogout } = props;
@@ -113,22 +113,48 @@ function Racun(props) {
 
     const preuzmiPDF = () => {
         const doc = new jsPDF();
-        const columns = ["Ime", "Cijena", "Količina", "Ukupno"];
-        const data = kosarica.map(stavka => [
-            stavka.ime,
-            stavka.cijena.toFixed(2),
-            stavka.kolicina,
-            (stavka.cijena * stavka.kolicina).toFixed(2)
-        ]);
+        const invoiceDate = getCurrentDate();
+        // Logo tvrtke
+        // Predpostavka da je logo smješten lokalno ili na serveru.
+        // doc.addImage('path_to_logo', 'JPEG', 15, 10, 50, 20);
 
-        doc.autoTable({
-            head: [columns],
-            body: data,
-            startY: 20,
-            theme: 'striped'
+        // Naslov i informacije o tvrtki
+        doc.setFontSize(10);
+        doc.text("Firma d.o.o.", 14, 30);
+        doc.text("Ulica , Postanski broj/ Mjesto", 14, 35);
+
+
+
+        // Informacije o računu
+        doc.setFontSize(20);
+        doc.text("Racun", 150, 30, null, null, 'right');
+        doc.setFontSize(10);
+        doc.text(`Datum racuna: ${invoiceDate}`, 150, 35, null, null, 'right');
+
+        const tableColumn = ["Ime Artikla", "Cijena", "Kolicina", "Dobavljac"];
+        const tableRows = [];
+
+        kosarica.forEach(stavka => {
+            const rowData = [
+                stavka.ime,
+                `${stavka.cijena} kn`,
+                stavka.kolicina,
+                stavka.dobavljac
+            ];
+            tableRows.push(rowData);
         });
-        doc.text(`Ukupno: ${izracunajUkupnuCijenu().toFixed(2)} KN`, 14, doc.lastAutoTable.finalY + 10);
-        doc.save('Racun.pdf');
+
+        doc.autoTable(tableColumn, tableRows, { startY: 50 });
+        doc.text(`Ukupno: ${izracunajUkupnuCijenu()} kn`, 20, doc.lastAutoTable.finalY + 10);
+        doc.save('primka.pdf');
+
+    };
+    const getCurrentDate = () => {
+        const today = new Date();
+        const day = today.getDate().toString().padStart(2, '0');
+        const month = (today.getMonth() + 1).toString().padStart(2, '0'); // Mjeseci počinju od 0
+        const year = today.getFullYear();
+        return `${day}.${month}.${year}`;
     };
 
     return (

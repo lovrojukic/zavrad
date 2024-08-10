@@ -114,7 +114,7 @@ function Primka(props) {
     return (
         <div className="ponuda-container">
             <Header isLoggedIn={isLoggedIn} onLogout={onLogout} />
-            <h2>Ponuda Artikala</h2>
+            <h2>Primka</h2>
             <ul className="artikli-list">
                 {artikli.map(artikl => (
                     <li key={artikl.id} className="artikl-item">
