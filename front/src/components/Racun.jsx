@@ -6,7 +6,6 @@ import 'jspdf-autotable';
 import "./Racun.css";
 
 function Racun(props) {
-    const { isLoggedIn, onLogout } = props;
     const [artikli, setArtikli] = useState([]);
     const [kosarica, setKosarica] = useState([]);
     const [kolicine, setKolicine] = useState({});
@@ -146,7 +145,7 @@ function Racun(props) {
 
         doc.autoTable(tableColumn, tableRows, { startY: 50 });
         doc.text(`Ukupno: ${izracunajUkupnuCijenu()} kn`, 20, doc.lastAutoTable.finalY + 10);
-        doc.save('primka.pdf');
+        doc.save('racun.pdf');
 
     };
     const getCurrentDate = () => {
@@ -159,9 +158,9 @@ function Racun(props) {
 
     return (
         <div>
-            <Header isLoggedIn={isLoggedIn} onLogout={onLogout} />
+            <Header/>
             <div className="container">
-                <h2>Artikli</h2>
+                <h2>Račun</h2>
                 <table>
                     <thead>
                     <tr>

@@ -1,10 +1,20 @@
-/* Header styles */
+/* Header general styles */
 .Header {
-    background-color: #2C3E50; /* Slightly lighter blue than the page background */
+    background-color: #2C3E50; /* Consistent dark blue background */
     color: white;
     padding: 20px 0;
     text-align: center;
     width: 100%;
+    display: flex; /* Flex container to help with alignment */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+/* Navigation and button container within the header */
+.Header-nav {
+    display: flex; /* Flexbox for inner navigation items */
+    align-items: center; /* Align buttons vertically */
 }
 
 /* Link and button styling within the header */
@@ -13,49 +23,23 @@
     text-decoration: none;
     background-color: transparent;
     border: none;
-    padding: 10px 20px;
+
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
+    border-radius: 5px; /* Rounded corners for buttons */
 }
 
 /* Hover effects for links and buttons in the header */
 .Header a:hover, .Header button:hover {
-    background-color: #3498DB; /* Change to a bright blue for hover */
-    color: white; /* Keep text color white on hover */
+    background-color: #3498DB; /* Bright blue for hover */
+    color: white; /* Ensure text color remains white on hover */
+    transform: scale(1.05); /* Slight increase in size on hover */
 }
 
-/* Main navigation link styles if using a navbar */
-.nav-link {
-    color: white;
-    text-decoration: none;
-    padding: 8px 15px;
-    display: inline-block;
-}
-
-.nav-link:hover {
-    background-color: #3498DB; /* Matching hover effect for navigation links */
-    color: white;
-}
-
-/* Adjust header spacing and alignment */
-.Header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px; /* Add horizontal padding */
-}
-
-/* Style for the menu icon */
-.menu-icon {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* Enhance visual separation in the header */
-.Header {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow for depth */
+/* Style adjustments for mobile view or smaller screens */
+@media (max-width: 768px) {
+    .Header-nav {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+    }
 }

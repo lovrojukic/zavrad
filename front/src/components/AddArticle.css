@@ -5,8 +5,8 @@
     height: 100vh; /* Zadržava punu visinu stranice */
     display: flex;
     align-items: center;
-    justify-content: center;
-    
+
+
 }
 
 .register-container {

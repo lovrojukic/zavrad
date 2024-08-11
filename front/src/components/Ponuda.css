@@ -1,72 +1,76 @@
-/* Global background */
+/* Globalni stilovi */
 body, html {
     margin: 0;
     padding: 0;
-    background-color: #1B2430; /* Ensure the whole page has the same dark blue background */
+    background-color: #1B2430; /* Tamnoplava pozadina */
+    color: #FFF; /* Bijeli tekst */
+    font-family: 'Roboto', sans-serif; /* Moderni font */
 }
 
-/* Ponuda.css */
-.ponuda-container {
-    margin: 20px;
-    color: #FFF; /* White text for readability */
-    font-family: 'Roboto', sans-serif; /* Modern and readable font */
-    background-color: transparent; /* Remove any specific background to let the global color show through */
-    min-height: 100vh; /* Full height of the viewport */
-    padding-bottom: 20px; /* Additional padding at the bottom */
-}
-
+/* Stilovi za listu artikala */
 .artikli-list {
     list-style: none;
     padding: 0;
-    margin-top: 20px; /* Space from the header */
+    margin: 20px 0; /* Odvojite listu od zaglavlja */
 }
 
 .artikl-item {
-    margin-bottom: 20px; /* More space between items for better readability */
-    padding: 10px;
-    background-color: transparent; /* Use transparent to maintain the uniform background */
-    border-radius: 5px;
-    border: 1px solid #2C3E50; /* Border to define each item without changing background color */
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Spread out the elements */
+    padding: 10px;
+    margin-bottom: 10px; /* Razmak između stavki */
+    background-color: #2C3E50; /* Malo svjetlija od pozadine */
+    border-radius: 5px;
+    border: 1px solid #34495E; /* Granica za definiranje svake stavke */
 }
 
-.artikl-item input[type="number"], .kosarica input[type="number"] {
-    width: 60px; /* Sufficient width for quantity input */
+/* Unos količine i gumb bliže imenu artikla */
+.artikl-name {
+    flex-grow: 1;
+    margin-right: 20px; /* Razmak prije kontrole količine */
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Automatski pomiče kontrolu količine i gumb desno */
+}
+
+.input-group input {
+    width: 60px; /* Širina za unos količine */
+    margin-right: 5px; /* Razmak između unosa količine i gumba */
     padding: 5px;
-    border: 1px solid #3498DB; /* Bright blue border */
-    background-color: #273B47; /* Darker input background for contrast */
-    color: #FFF; /* White text */
+    border: 1px solid #3498DB; /* Plava granica */
+    background-color: #273B47; /* Tamnije plava za kontrast */
+    color: white; /* Bijeli tekst */
     border-radius: 3px;
 }
 
-button {
-    background-color: #3498DB; /* Vibrant blue for buttons */
-    color: white;
+.input-group button {
+    padding: 5px 10px;
+    background-color: #3498DB;
     border: none;
-    border-radius: 10px;
-    padding: 8px 16px;
+    color: white;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #2980B9; /* Darker blue on hover */
+.input-group button:hover {
+    background-color: #2980B9; /* Tamnije plava na hover */
 }
 
+/* Stilovi za košaricu */
 .kosarica {
-    background-color: transparent; /* Keep the cart background consistent with the page */
+    margin-top: 30px;
+    background-color: transparent; /* Transparentna za uniformnost */
     padding: 15px;
+    border: 1px solid #34495E; /* Slična boja kao stavke */
     border-radius: 5px;
-    border: 1px solid #2C3E50; /* Border to define the cart area */
-    margin-top: 30px; /* Space between the list and the cart */
+
 }
 
-.kosarica h3, .ponuda-container h2 {
-    border-bottom: 1px solid #3498DB; /* Add a subtle line under headings */
-    padding-bottom: 10px;
+.kosarica h3 {
+    margin-top: 0; /* Uklanja gornji margin iz h3 */
 }
 
 .kosarica ul {
@@ -75,9 +79,10 @@ button:hover {
 }
 
 .kosarica li {
-    border-bottom: 1px solid #273B47; /* Lighter line for items in the cart */
-    padding: 8px 0;
     display: flex;
-    justify-content: space-between; /* Layout for the item and its details */
-    margin-bottom: 5px; /* Space between items */
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #34495E; /* Granica između stavki */
+    margin-right: 1600px;
 }
