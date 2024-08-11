@@ -1,21 +1,12 @@
-// Header.jsx
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import "./Header.css";
 
 
 const Header = (props) => {
-
-    const [sidebarOpen, setSidebarOpen] = useState(false); // State to handle sidebar visibility
-
-
-
     return (
         <header className="Header">
-
                 <div className="Header-Content">
-
-
 
                 </div>
                 <div>

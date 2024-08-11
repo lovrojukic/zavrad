@@ -7,7 +7,7 @@ import AddArticle from './components/AddArticle.jsx';
 import Ponuda from "./components/Ponuda";
 import Racun from "./components/Racun";
 import PopisArtikala from "./components/PopisArtikala";
-import PopisNarudzbi from "./components/PopisNarudzbi";
+
 import Narudžbenica from "./components/Narudžbenica";
 import Primka from "./components/Primka";
 
@@ -26,7 +26,6 @@ const App = () => {
                 <Route path="/ponuda" element={<Ponuda/>} />
                 <Route path="/racun" element={<Racun/>} />
                 <Route path="/popisArtikala" element={<PopisArtikala/>} />
-                <Route path="/popisNarudzbi" element={<PopisNarudzbi/>} />
                 <Route path="/narudžbenica" element={<Narudžbenica/>} />
                 <Route path="/primka" element={<Primka/>} />
 

@@ -1,0 +1,27 @@
+.artikli-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.artikl-item {
+    background-color: #2C3E50;
+    padding: 10px;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.artikl-item h3 {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    border-bottom: none;
+}

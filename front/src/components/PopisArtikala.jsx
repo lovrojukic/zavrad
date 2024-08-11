@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import axios from 'axios';
-import './AddPancake.css'; 
+import './PopisNarudzbi.css';
 
 const PopisArtikala = (props) => {
-    const { isLoggedIn, onLogout } = props;
     const [artikli, setArtikli] = useState([]);
 
     useEffect(() => {
@@ -27,7 +26,7 @@ const PopisArtikala = (props) => {
 
     return (
         <div className="ponuda-container">
-            <Header isLoggedIn={isLoggedIn} onLogout={onLogout} />
+            <Header/>
             <h2>Popis Artikala</h2>
             <ul className="artikli-list">
                 {artikli.map(artikl => (

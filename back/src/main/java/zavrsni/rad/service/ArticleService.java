@@ -86,20 +86,6 @@ public class ArticleService {
             }
         }
 
-        /*
-        Optional<Article> test = articleRepository.findById(7L);
-        if(test.isPresent()){
-            List<Order> test2 = orderRepository.findByArticle(test.get());
-            for (Order order : test2) {
-                if(order.getAmount()>1){
-                    order.setAmount(1L);
-                }
-            }
-        }
-        */
-
-
-
         articleRepository.saveAll(articlesToOrder);
         return OrderArticleResponse.builder().success(true).sum(sum).articleList(orderedArticles).build();
     }
@@ -117,17 +103,25 @@ public class ArticleService {
                     article.getLeadTime()
             );
 
-            if (result != null && result.contains("true")) {
-                // Dobijanje imena artikla iz odgovora
+            if (result != null) {
+                // Dobijanje imena artikla, reorder levela i trenutne količine iz odgovora
                 String[] responseParts = result.replaceAll("[{}\"]", "").split(",");
+                boolean needsReorder = false;
+                double reorderLevel = 0.0;
+
                 for (String part : responseParts) {
                     String[] keyValue = part.split(":");
                     if (keyValue[0].trim().equals("reorder")) {
-                        if (keyValue[1].trim().equals("true")) {
-                            articlesToReorder.add(article.getName());
-                        }
-                        break;
+                        needsReorder = keyValue[1].trim().equals("true");
+                    } else if (keyValue[0].trim().equals("reorder_level")) {
+                        reorderLevel = Double.parseDouble(keyValue[1].trim());
                     }
+                }
+
+                if (needsReorder) {
+                    // Adding the article's current amount to the description
+                    articlesToReorder.add(String.format("%s - Preporučena količina proizvoda: %.2f - Trenutna Količina: %d",
+                            article.getName(), reorderLevel, article.getAmount().intValue()));
                 }
             }
         }

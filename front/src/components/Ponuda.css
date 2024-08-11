@@ -1,48 +1,47 @@
-/* Globalni stilovi */
 body, html {
     margin: 0;
     padding: 0;
-    background-color: #1B2430; /* Tamnoplava pozadina */
-    color: #FFF; /* Bijeli tekst */
-    font-family: 'Roboto', sans-serif; /* Moderni font */
+    background-color: #1B2430;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
 }
 
-/* Stilovi za listu artikala */
+
 .artikli-list {
     list-style: none;
     padding: 0;
-    margin: 20px 0; /* Odvojite listu od zaglavlja */
+    margin: 20px 0;
 }
 
 .artikl-item {
     display: flex;
     align-items: center;
     padding: 10px;
-    margin-bottom: 10px; /* Razmak između stavki */
-    background-color: #2C3E50; /* Malo svjetlija od pozadine */
+    margin-bottom: 10px;
+    background-color: #2C3E50;
     border-radius: 5px;
-    border: 1px solid #34495E; /* Granica za definiranje svake stavke */
+    border: 1px solid #34495E;
 }
 
-/* Unos količine i gumb bliže imenu artikla */
+
 .artikl-name {
     flex-grow: 1;
-    margin-right: 20px; /* Razmak prije kontrole količine */
+    margin-right: 20px;
 }
 
 .input-group {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Automatski pomiče kontrolu količine i gumb desno */
+    margin-left: auto;
 }
 
 .input-group input {
-    width: 60px; /* Širina za unos količine */
-    margin-right: 5px; /* Razmak između unosa količine i gumba */
+    width: 60px;
+    margin-right: 5px;
     padding: 5px;
-    border: 1px solid #3498DB; /* Plava granica */
-    background-color: #273B47; /* Tamnije plava za kontrast */
-    color: white; /* Bijeli tekst */
+    border: 1px solid #3498DB;
+    background-color: #273B47;
+    color: white;
     border-radius: 3px;
 }
 
@@ -56,21 +55,21 @@ body, html {
 }
 
 .input-group button:hover {
-    background-color: #2980B9; /* Tamnije plava na hover */
+    background-color: #2980B9;
 }
 
-/* Stilovi za košaricu */
+
 .kosarica {
     margin-top: 30px;
-    background-color: transparent; /* Transparentna za uniformnost */
+    background-color: transparent;
     padding: 15px;
-    border: 1px solid #34495E; /* Slična boja kao stavke */
+    border: 1px solid #34495E;
     border-radius: 5px;
 
 }
 
 .kosarica h3 {
-    margin-top: 0; /* Uklanja gornji margin iz h3 */
+    margin-top: 0;
 }
 
 .kosarica ul {
@@ -83,6 +82,6 @@ body, html {
     justify-content: space-between;
     margin-bottom: 5px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #34495E; /* Granica između stavki */
+    border-bottom: 1px solid #34495E;
     margin-right: 1600px;
 }

@@ -130,21 +130,21 @@ function Racun(props) {
         doc.setFontSize(10);
         doc.text(`Datum racuna: ${invoiceDate}`, 150, 35, null, null, 'right');
 
-        const tableColumn = ["Ime Artikla", "Cijena", "Kolicina", "Dobavljac"];
+        const tableColumn = ["Ime Artikla", "Cijena", "Kolicina", "Ukupno"];
         const tableRows = [];
 
         kosarica.forEach(stavka => {
             const rowData = [
                 stavka.ime,
-                `${stavka.cijena} kn`,
+                `${stavka.cijena} eura`,
                 stavka.kolicina,
-                stavka.dobavljac
+                `${stavka.kolicina*stavka.cijena} eura`
             ];
             tableRows.push(rowData);
         });
 
         doc.autoTable(tableColumn, tableRows, { startY: 50 });
-        doc.text(`Ukupno: ${izracunajUkupnuCijenu()} kn`, 20, doc.lastAutoTable.finalY + 10);
+        doc.text(`Ukupno: ${izracunajUkupnuCijenu()} eura`, 20, doc.lastAutoTable.finalY + 10);
         doc.save('racun.pdf');
 
     };
@@ -167,6 +167,7 @@ function Racun(props) {
                         <th>Ime</th>
                         <th>Cijena</th>
                         <th>Količina</th>
+                        <th>Ukupno</th>
                         <th>Akcija</th>
                     </tr>
                     </thead>
@@ -183,6 +184,7 @@ function Racun(props) {
                                     min="1"
                                 />
                             </td>
+                            <td>{(artikl.price * kolicine[artikl.id]).toFixed(2)} eura</td>
                             <td>
                                 <button onClick={() => dodajUKosaricu(artikl)}>Dodaj u košaricu</button>
                             </td>
@@ -220,7 +222,7 @@ function Racun(props) {
                     </tbody>
                 </table>
                 <div className="total">
-                    <h3>Ukupno: {izracunajUkupnuCijenu().toFixed(2)} KN</h3>
+                    <h3>Ukupno: {izracunajUkupnuCijenu().toFixed(2)} eura</h3>
                     <button onClick={posaljiNarudzbu}>Pošalji narudžbu</button>
                     <button onClick={preuzmiPDF}>Preuzmi PDF</button>
                 </div>

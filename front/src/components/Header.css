@@ -1,23 +1,22 @@
-/* Header general styles */
+
 .Header {
-    background-color: #2C3E50; /* Consistent dark blue background */
+    background-color: #2C3E50;
     color: white;
     padding: 20px 0;
     text-align: center;
     width: 100%;
-    display: flex; /* Flex container to help with alignment */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Navigation and button container within the header */
 .Header-nav {
-    display: flex; /* Flexbox for inner navigation items */
-    align-items: center; /* Align buttons vertically */
+    display: flex;
+    align-items: center;
 }
 
-/* Link and button styling within the header */
+
 .Header a, .Header button {
     color: white;
     text-decoration: none;
@@ -27,19 +26,19 @@
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
-    border-radius: 5px; /* Rounded corners for buttons */
+    border-radius: 5px;
 }
 
-/* Hover effects for links and buttons in the header */
+
 .Header a:hover, .Header button:hover {
-    background-color: #3498DB; /* Bright blue for hover */
-    color: white; /* Ensure text color remains white on hover */
-    transform: scale(1.05); /* Slight increase in size on hover */
+    background-color: #3498DB;
+    color: white;
+    transform: scale(1.05);
 }
 
-/* Style adjustments for mobile view or smaller screens */
+
 @media (max-width: 768px) {
     .Header-nav {
-        flex-direction: column; /* Stack buttons vertically on small screens */
+        flex-direction: column;
     }
 }

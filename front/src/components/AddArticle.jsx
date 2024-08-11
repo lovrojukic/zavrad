@@ -40,7 +40,7 @@ const AddArticle = (props) => {
                 },
             });
             alert("Artikl uspješno dodan!");
-            console.log(response.data); // Ovo će ispisati podatke koji se vraćaju iz backend-a
+            console.log(response.data);
         } catch (err) {
             console.error("Došlo je do greške:", err.response ? err.response.data.message : err.message);
             alert(err.response ? err.response.data.message : "Došlo je do greške!");
