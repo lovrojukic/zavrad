@@ -256,7 +256,7 @@ function Primka(props) {
                 </table>
                 <div className="total">
                     <h3>Ukupno: {izracunajUkupnuCijenu().toFixed(2)} eura</h3>
-                    <button onClick={potvrdiPrimku}>Pošalji ponudu</button>
+                    <button onClick={potvrdiPrimku}>Potvrdi primku</button>
                     <button onClick={preuzmiPDF}>Preuzmi PDF primke</button>
                 </div>
                 {reorderArticles.length > 0 && (

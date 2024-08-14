@@ -92,17 +92,24 @@ function Racun(props) {
     const posaljiNarudzbu = async () => {
         try {
             const token = localStorage.getItem('jwtToken');
-            const response = await axios.post('http://localhost:8080/api/article/order', {
-                articleList: kosarica
-            }, {
+            // Map the kosarica items to the structure expected by the backend
+            const orderPayload = {
+                articleList: kosarica.map(item => ({
+                    articleId: item.id,
+                    amount: item.kolicina,
+                    name: item.ime
+                }))
+            };
+
+            const response = await axios.post('http://localhost:8080/api/article/order', orderPayload, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
 
             if (response.data.success) {
                 alert('Narudžba je uspješno poslana.');
-                setKosarica([]);
+                setKosarica([]); // Clear the cart after successful order
             } else {
-                alert('Došlo je do greške pri slanju narudžbe.');
+                alert(`Došlo je do greške pri slanju narudžbe: ${response.data.error}`);
             }
         } catch (error) {
             console.error('Error sending order:', error);

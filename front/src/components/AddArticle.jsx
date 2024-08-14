@@ -4,7 +4,6 @@ import { useState } from "react";
 import "./AddArticle.css";
 
 const AddArticle = (props) => {
-    const { isLoggedIn, onLogout } = props;
     const [articleData, setArticleData] = useState({
         name: '',
         amount: '',
@@ -49,7 +48,7 @@ const AddArticle = (props) => {
 
     return (
         <div className="page-container">
-            <Header isLoggedIn={isLoggedIn} onLogout={onLogout} />
+            <Header/>
             <div className="register-container">
                 <h2>Dodavanje artikla</h2>
                 <form onSubmit={save} id="addArticleForm">
