@@ -24,7 +24,6 @@ public class Article {
     private Long amount;
     private double price;
     private String supplier;
-    private double DemandVariability;
     private Long MonthlyDemand;
     private Long LeadTime;
 

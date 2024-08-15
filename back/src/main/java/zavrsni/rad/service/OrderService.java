@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import zavrsni.rad.entity.Article;
 import zavrsni.rad.entity.Order;
 import zavrsni.rad.repository.ArticleRepository;
-import zavrsni.rad.repository.OrderHeaderRepository;
 import zavrsni.rad.repository.OrderRepository;
 
 import java.util.List;

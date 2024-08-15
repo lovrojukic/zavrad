@@ -69,10 +69,6 @@ const AddArticle = (props) => {
                         <input type="text" id="supplier" value={articleData.supplier} onChange={handleChange} required />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="demandVariability">Varijabilnost Potražnje:</label>
-                        <input type="number" id="demandVariability" value={articleData.demandVariability} onChange={handleChange} required />
-                    </div>
-                    <div className="form-group">
                         <label htmlFor="monthlyDemand">Mjesečna Potražnja:</label>
                         <input type="number" id="monthlyDemand" value={articleData.monthlyDemand} onChange={handleChange} required />
                     </div>

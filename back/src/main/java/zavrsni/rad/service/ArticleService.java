@@ -34,9 +34,8 @@ public class ArticleService {
                 .price(articleCreateRequest.getPrice())
                 .amount(articleCreateRequest.getAmount())
                 .supplier(articleCreateRequest.getSupplier())
-                .DemandVariability(articleCreateRequest.getDemandVariability())  // Dodano
-                .MonthlyDemand(articleCreateRequest.getMonthlyDemand())          // Dodano
-                .LeadTime(articleCreateRequest.getLeadTime())                    // Dodano
+                .MonthlyDemand(articleCreateRequest.getMonthlyDemand())
+                .LeadTime(articleCreateRequest.getLeadTime())
                 .build();
         return articleRepository.save(a);
     }
@@ -45,7 +44,7 @@ public class ArticleService {
         Optional<Article> articleOptional = articleRepository.findById(articleId);
         if (articleOptional.isPresent()) {
             Article article = articleOptional.get();
-            article.setAmount(article.getAmount() + additionalAmount); // Dodavanje količine
+            article.setAmount(article.getAmount() + additionalAmount);
             return articleRepository.save(article);
         } else {
             throw new RuntimeException("Article not found");
@@ -99,7 +98,6 @@ public class ArticleService {
                     article.getName(),
                     article.getMonthlyDemand(),
                     article.getAmount().intValue(),
-                    article.getDemandVariability(),
                     article.getLeadTime()
             );
 

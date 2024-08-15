@@ -8,7 +8,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class ReorderChecker {
-    public static String checkReorder(String product, Long monthlyDemand, int currentStock, double demandVariability, Long leadTime) {
+    public static String checkReorder(String product, Long monthlyDemand, int currentStock, Long leadTime) {
         try {
             URL url = new URL("http://localhost:5001/check_reorder");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -18,8 +18,8 @@ public class ReorderChecker {
             conn.setDoOutput(true);
 
             String jsonInputString = String.format(Locale.US,
-                    "{\"product\": \"%s\", \"monthly_demand\": %d, \"current_stock\": %d, \"demand_variability\": %.6f, \"lead_time\": %d}",
-                    product, monthlyDemand, currentStock, demandVariability, leadTime);
+                    "{\"product\": \"%s\", \"monthly_demand\": %d, \"current_stock\": %d, \"lead_time\": %d}",
+                    product, monthlyDemand, currentStock, leadTime);
 
             System.out.println("Sending JSON: " + jsonInputString);
 
