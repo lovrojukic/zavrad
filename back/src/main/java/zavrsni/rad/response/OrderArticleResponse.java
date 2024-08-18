@@ -16,5 +16,6 @@ public class OrderArticleResponse {
     private boolean success;
     private String error;
     private List<OrderArticle> articleList;
-    private Long sum;
+    private Long totalPrice;  // Ovdje bi bilo dobro preimenovati u `totalPrice` i promijeniti tip u `BigDecimal`
 }
+

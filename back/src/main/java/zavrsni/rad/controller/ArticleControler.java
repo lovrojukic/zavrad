@@ -11,6 +11,7 @@ import zavrsni.rad.request.OrderArticle;
 import zavrsni.rad.request.OrderArticleRequests;
 import zavrsni.rad.response.OrderArticleResponse;
 import zavrsni.rad.service.ArticleService;
+import zavrsni.rad.service.OrderService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class ArticleControler {
     @Autowired
     private ArticleService articleService;
 
+
     @GetMapping
     public List<Article> getAllArticles(){
         return articleService.getAllArticle();
@@ -34,10 +36,6 @@ public class ArticleControler {
         return articleService.addArticle(article);
     }
 
-    @PostMapping("order")
-    public OrderArticleResponse orderArticle(@RequestBody OrderArticleRequests orderArticleRequests){
-        return articleService.orderArticle(orderArticleRequests);
-    }
 
     @PostMapping("/addcount")
     public ResponseEntity<?> addArticleCounts(@RequestBody List<ArticleUpdateRequest> updateRequests) {

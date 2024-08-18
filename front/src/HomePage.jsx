@@ -1,12 +1,11 @@
-// HomePage.jsx
-import React, { useState } from 'react';
+import React, {} from 'react';
 import Header from './components/Header';
-import axios from 'axios';
+
 import {Link} from "react-router-dom";
 
 import './HomePage.css';
 
-const HomePage = (props) => {
+const HomePage = () => {
 
     return (
         <div className="page-container">

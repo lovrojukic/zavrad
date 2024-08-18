@@ -101,7 +101,7 @@ function Racun(props) {
                 }))
             };
 
-            const response = await axios.post('http://localhost:8080/api/article/order', orderPayload, {
+            const response = await axios.post('http://localhost:8080/api/order', orderPayload, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
 
@@ -120,18 +120,15 @@ function Racun(props) {
     const preuzmiPDF = () => {
         const doc = new jsPDF();
         const invoiceDate = getCurrentDate();
-        // Logo tvrtke
-        // Predpostavka da je logo smješten lokalno ili na serveru.
-        // doc.addImage('path_to_logo', 'JPEG', 15, 10, 50, 20);
 
-        // Naslov i informacije o tvrtki
+
         doc.setFontSize(10);
         doc.text("Firma d.o.o.", 14, 30);
         doc.text("Ulica , Postanski broj/ Mjesto", 14, 35);
 
 
 
-        // Informacije o računu
+
         doc.setFontSize(20);
         doc.text("Racun", 150, 30, null, null, 'right');
         doc.setFontSize(10);

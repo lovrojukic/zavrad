@@ -1,0 +1,61 @@
+
+
+.racuni-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.racun-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #2C3E50;  /* Tamnija pozadinska boja za svaki račun */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.racun-item h3 {
+    margin-top: 0;
+    color: #3498DB;  /* Svijetlo plava boja za ID računa */
+}
+
+.artikl-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #273B47;  /* Ista pozadinska boja kao i kontejner */
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.artikl-item p {
+    margin: 5px 0;
+}
+
+.artikl-item p:last-child {
+    font-weight: bold;
+    color: #3498DB;  /* Svijetlo plava boja za ukupnu cijenu artikla */
+}
+
+h2 {
+    color: #3498DB;  /* Svijetlo plava boja za naslov */
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h4 {
+    color: #FFF;  /* Bijela boja za podnaslove */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #3498DB;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

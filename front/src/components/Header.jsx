@@ -16,6 +16,9 @@ const Header = (props) => {
                     <Link to="/PopisArtikala">
                         <button>Pregled Artikala</button>
                     </Link>
+                    <Link to="/PopisRacuna">
+                        <button>Pregled Racuna</button>
+                    </Link>
                 </div>
 
         </header>

@@ -53,41 +53,7 @@ public class ArticleService {
 
 
 
-    public OrderArticleResponse orderArticle(OrderArticleRequests orderArticleRequests) {
-        List<Article> articlesToOrder = new ArrayList<>();
-        List<OrderArticle> orderedArticles = new ArrayList<>();
-        long sum = 0L;
-        for (OrderArticle orderArticle : orderArticleRequests.getArticleList()) {
-            Optional<Article> articleOptional = articleRepository.findById(orderArticle.getArticleId());
-            if (articleOptional.isPresent()) {
-                Article a = articleOptional.get();
-                a.setAmount(a.getAmount() - orderArticle.getAmount());
-                sum += orderArticle.getAmount() * a.getPrice();
-                orderedArticles.add(OrderArticle.builder().articleId(a.getId()).amount(orderArticle.getAmount()).name(a.getName()).build());
-                articlesToOrder.add(a);
-            }
-        }
 
-        for (Article article : articlesToOrder) {
-            if (article.getAmount() < 0) {
-                return OrderArticleResponse.builder()
-                        .success(false)
-                        .error("Nedovoljno artikala: " + article.getName())
-                        .build();
-            }
-        }
-
-        for(Article article:articlesToOrder){
-            for (OrderArticle orderArticle : orderedArticles) {
-                if(orderArticle.getArticleId().equals(article.getId())){
-                    orderRepository.save(Order.builder().article(article).amount(orderArticle.getAmount()).build());
-                }
-            }
-        }
-
-        articleRepository.saveAll(articlesToOrder);
-        return OrderArticleResponse.builder().success(true).sum(sum).articleList(orderedArticles).build();
-    }
 
     public List<String> checkReorderForAllArticles() {
         List<Article> articles = articleRepository.findAll();
@@ -102,7 +68,6 @@ public class ArticleService {
             );
 
             if (result != null) {
-                // Dobijanje imena artikla, reorder levela i trenutne količine iz odgovora
                 String[] responseParts = result.replaceAll("[{}\"]", "").split(",");
                 boolean needsReorder = false;
                 double reorderLevel = 0.0;
@@ -117,7 +82,7 @@ public class ArticleService {
                 }
 
                 if (needsReorder) {
-                    // Adding the article's current amount to the description
+
                     articlesToReorder.add(String.format("%s - Preporučena količina proizvoda: %.2f - Trenutna Količina: %d",
                             article.getName(), reorderLevel, article.getAmount().intValue()));
                 }
